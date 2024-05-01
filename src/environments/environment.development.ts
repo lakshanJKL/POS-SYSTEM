@@ -1,7 +1,7 @@
 export const environment = {
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
- firebaseConfig :{
+  firebaseConfig: {
     apiKey: "AIzaSyDsdUYi-K2Ie7sYoXEElXJt2K9kjuAzcNA",
     authDomain: "angular-pos-8cb4a.firebaseapp.com",
     databaseURL: "https://angular-pos-8cb4a-default-rtdb.firebaseio.com",

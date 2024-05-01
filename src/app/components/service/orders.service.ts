@@ -1,11 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class OrdersService {
 
-  constructor() { }
+  constructor() {
+  }
 
-  public productCart:any[] = [];
+  public productCart: any[] = [];
 }

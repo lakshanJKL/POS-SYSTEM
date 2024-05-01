@@ -88,13 +88,13 @@ export class UpdateCustomerComponent implements OnInit {
           salary: this.form.value.salary,
           avatar: res
         }
-        //=======update=========
+        //***************** update customer *******************************
         const cusRef = this.db.collection('customers').doc(this.customerId);
         cusRef.update(customers)
           .then((docRef) => {
 
             this.loading = false;
-            this.router.navigateByUrl("/dashboard/customers").then(()=>{
+            this.router.navigateByUrl("/dashboard/customers").then(() => {
 
               this.snackBar.open('Customer Updated !', 'Close', {
                 duration: 4000,
@@ -108,7 +108,7 @@ export class UpdateCustomerComponent implements OnInit {
           alert("Please Try Again !");
           this.loading = false;
         })
-        //================
+        //*************************************************
       })
     }).catch(err => {
       alert("Something wrong");

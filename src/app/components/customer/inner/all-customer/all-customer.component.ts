@@ -26,28 +26,30 @@ import {DashboardService} from "../../../service/dashboard.service";
   templateUrl: './all-customer.component.html',
   styleUrl: './all-customer.component.scss'
 })
-export class AllCustomerComponent implements OnInit{
+export class AllCustomerComponent implements OnInit {
 
-  customers:any[]=[];
-  expandRw:boolean =false;
-  rowNum:any= 0;
-  constructor(private db:AngularFirestore,
-              private storage:AngularFireStorage,
-              private router:Router,
-              private snackBar:MatSnackBar,
-              private dashboardService:DashboardService
+  customers: any[] = [];
+  expandRw: boolean = false;
+  rowNum: any = 0;
+
+  constructor(private db: AngularFirestore,
+              private storage: AngularFireStorage,
+              private router: Router,
+              private snackBar: MatSnackBar,
+              private dashboardService: DashboardService
   ) {
   }
+
   ngOnInit(): void {
     this.db.collection('customers').get().subscribe(querySnapshot => {
-      querySnapshot.forEach(doc =>{
-        this.customers.push({id:doc.id, data:doc.data()})
+      querySnapshot.forEach(doc => {
+        this.customers.push({id: doc.id, data: doc.data()})
       })
     });
   }
 
-  deleteCustomer(id:any, avatar:any){
-    if (confirm('Are you sure?')){
+  deleteCustomer(id: any, avatar: any) {
+    if (confirm('Are you sure?')) {
       this.db.collection('customers').doc(id).delete().then(() => {
         this.storage.storage.refFromURL(avatar).delete().then(() => {
           this.snackBar.open('Customer Deleted !', 'Close', {

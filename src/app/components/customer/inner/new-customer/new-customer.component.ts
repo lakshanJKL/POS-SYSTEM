@@ -37,7 +37,7 @@ import {MatProgressSpinner, MatProgressSpinnerModule} from "@angular/material/pr
   styleUrl: './new-customer.component.scss'
 })
 export class NewCustomerComponent {
-  panelOpenState: boolean=false;
+  panelOpenState: boolean = false;
   loading: boolean = false;
   selectedAvatar: any;
   // @ts-ignore
@@ -49,8 +49,7 @@ export class NewCustomerComponent {
   constructor(
     private storage: AngularFireStorage,
     private snackBar: MatSnackBar,
-    private db:AngularFirestore
-
+    private db: AngularFirestore
   ) {
   }
 
@@ -87,17 +86,17 @@ export class NewCustomerComponent {
         }
         //=======Save customer=========
         this.db.collection('customers').add(customers)
-          .then((docRef)=>{
+          .then((docRef) => {
             this.snackBar.open('Customer Saved!', 'Close', {
               duration: 5000,
               verticalPosition: 'top',
-              horizontalPosition:"center",
+              horizontalPosition: "center",
               direction: 'ltr'
             });
             this.loading = false;
             window.location.reload();
           }).catch(error => {
-           alert("Not Saved ! Try Again");
+          alert("Not Saved ! Try Again");
         })
 
       })

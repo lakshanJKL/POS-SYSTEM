@@ -1,19 +1,20 @@
-.text{
+.text {
   display: flex;
   align-items: center;
-  justify-content:flex-end;
+  justify-content: flex-end;
   font-family: "Roboto Condensed", sans-serif;
-  font-size:24px;
+  font-size: 24px;
   font-weight: 600;
   margin-bottom: 20px;
 }
-.outer-box{
+
+.outer-box {
   width: 100%;
   height: 450px;
   border-radius: 5px;
   padding: 10px;
   background-color: rgba(104, 109, 222, 0.27);
-  box-shadow: 0px 0px 7px 0px rgba(0,0,0,1);
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 1);
   overflow: hidden;
 
 }

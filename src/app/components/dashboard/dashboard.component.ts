@@ -26,20 +26,21 @@ import {Observable} from "rxjs";
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
-export class DashboardComponent implements OnInit{
-  isState: any=true;
+export class DashboardComponent implements OnInit {
+  isState: any = true;
 
-  constructor(private router:Router,
-              private dashboardService:DashboardService
+  constructor(private router: Router,
+              private dashboardService: DashboardService
   ) {
   }
+
   loadState() {
     this.isState = false;
   }
 
   loadHome() {
     this.isState = true;
-    this.router.navigateByUrl("/dashboard").then(()=>{
+    this.router.navigateByUrl("/dashboard").then(() => {
       this.router.navigateByUrl("/dashboard/home")
     });
   }

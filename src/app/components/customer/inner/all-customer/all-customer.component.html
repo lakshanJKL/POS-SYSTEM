@@ -8,7 +8,7 @@
             <div class="context">
               No.
             </div>
-            </th>
+          </th>
           <th>
             <div class="context">
               Name
@@ -37,7 +37,7 @@
         </tr>
         </thead>
         <tbody *ngFor="let tempCustomer of customers; index as num">
-        <tr >
+        <tr>
           <td>
             <div class="context">
               {{num + 1}}
@@ -66,10 +66,12 @@
           <td>
             <div class="context">
               <div class="btns">
-                <button class="dlt" mat-icon-button color="warn" (click)="deleteCustomer(tempCustomer?.id, tempCustomer?.data.avatar)">
+                <button class="dlt" mat-icon-button color="warn"
+                        (click)="deleteCustomer(tempCustomer?.id, tempCustomer?.data.avatar)">
                   <mat-icon>delete</mat-icon>
                 </button>
-                <button mat-icon-button color="primary" routerLink="/dashboard/customers/new/all/update/{{tempCustomer?.id}}" (click)="expandRow(num)">
+                <button mat-icon-button color="primary"
+                        routerLink="/dashboard/customers/new/all/update/{{tempCustomer?.id}}" (click)="expandRow(num)">
                   <mat-icon>edit</mat-icon>
                 </button>
               </div>

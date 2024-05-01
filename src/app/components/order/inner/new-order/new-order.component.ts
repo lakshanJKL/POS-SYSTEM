@@ -192,7 +192,7 @@ export class NewOrderComponent implements OnInit {
   }
 
   placeOrder() {
-    if (!((Object.keys(this.customer).length === 0) || (this.ordersService.productCart.length == 0))) {
+    if (!(this.ordersService.productCart.length == 0)) {
 
       //customer object
       this.customer = {

@@ -1,16 +1,17 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DashboardService {
 
-  constructor() { }
+  constructor() {
+  }
 
-public colors =(alfa:any)=>{
-    let red = Math.floor(Math.random()*255);
-    let green = Math.floor(Math.random()*255);
-    let blue = Math.floor(Math.random()*255);
+  public colors = (alfa: any) => {
+    let red = Math.floor(Math.random() * 255);
+    let green = Math.floor(Math.random() * 255);
+    let blue = Math.floor(Math.random() * 255);
 
     return `rgba(${red},${green},${blue},${alfa})`;
   }

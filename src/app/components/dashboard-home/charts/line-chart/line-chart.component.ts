@@ -11,22 +11,22 @@ import {DashboardService} from "../../../service/dashboard.service";
   templateUrl: './line-chart.component.html',
   styleUrl: './line-chart.component.scss'
 })
-export class LineChartComponent implements OnInit{
+export class LineChartComponent implements OnInit {
   canvas: any;
   ctx: any;
   @ViewChild("lineChart") myLineChart: any;
-  allCustomersName: any[]=[];
+  allCustomersName: any[] = [];
 
-  constructor(private database:AngularFirestore,
-              private dashboardService:DashboardService,
-
+  constructor(private database: AngularFirestore,
+              private dashboardService: DashboardService,
   ) {
   }
+
   ngOnInit(): void {
     this.database.collection("customers").get()
-      .subscribe((querySnaps)=>{
-        querySnaps.forEach(doc=>{
-          let data:any = doc.data();
+      .subscribe((querySnaps) => {
+        querySnaps.forEach(doc => {
+          let data: any = doc.data();
           this.allCustomersName.push(data.fullName);
         });
         this.createLineChart();
@@ -43,7 +43,7 @@ export class LineChartComponent implements OnInit{
     new Chart(this.ctx, {
       type: "line",
       data: {
-        labels:["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         datasets: [{
           label: 'All Customers',
           data: [this.allCustomersName.length],

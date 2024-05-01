@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {RouterLink} from "@angular/router";
 import {MatButton} from "@angular/material/button";
 import {PieChartComponent} from "./charts/pie-chart/pie-chart.component";

@@ -11,66 +11,68 @@ import {DashboardService} from "../../../service/dashboard.service";
 @Component({
   selector: 'app-all-product',
   standalone: true,
-    imports: [
-        NgForOf,
-        CurrencyPipe,
-        MatIcon,
-        MatFabButton,
-        MatMiniFabButton,
-        MatIconButton,
-        RouterLink,
-        RouterOutlet,
-        NgIf,
-        NgClass
-    ],
+  imports: [
+    NgForOf,
+    CurrencyPipe,
+    MatIcon,
+    MatFabButton,
+    MatMiniFabButton,
+    MatIconButton,
+    RouterLink,
+    RouterOutlet,
+    NgIf,
+    NgClass
+  ],
   templateUrl: './all-product.component.html',
   styleUrl: './all-product.component.scss'
 })
-export class AllProductComponent implements OnInit{
+export class AllProductComponent implements OnInit {
 
-    products:any[]=[];
-    expandRw:boolean =false;
-    rowNum:any= 0;
-    constructor(private db:AngularFirestore,
-                private storage:AngularFireStorage,
-                private router:Router,
-                private snackBar:MatSnackBar,
-                private dashboardService:DashboardService
-    ) {
-    }
-    ngOnInit(): void {
-        this.db.collection('products').get().subscribe(querySnapshot => {
-            querySnapshot.forEach(doc =>{
-                this.products.push({id:doc.id, data:doc.data()});
-            })
+  products: any[] = [];
+  expandRw: boolean = false;
+  rowNum: any = 0;
+
+  constructor(private db: AngularFirestore,
+              private storage: AngularFireStorage,
+              private router: Router,
+              private snackBar: MatSnackBar,
+              private dashboardService: DashboardService
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.db.collection('products').get().subscribe(querySnapshot => {
+      querySnapshot.forEach(doc => {
+        this.products.push({id: doc.id, data: doc.data()});
+      })
+    });
+  }
+
+  deleteCustomer(id: any, avatar: any) {
+    if (confirm('Are you sure ?')) {
+      this.db.collection('products').doc(id).delete().then(() => {
+        this.storage.storage.refFromURL(avatar).delete().then(() => {
+          this.snackBar.open('product Deleted !', 'Close', {
+            duration: 5000,
+            verticalPosition: 'top',
+            horizontalPosition: 'center',
+            direction: 'ltr'
+          });
+
+          window.location.reload();
+
+        }).catch(() => {
+          alert('Error deleting avatar:');
         });
+      }).catch(() => {
+        alert('Error deleting product:');
+      });
     }
+  }
 
-    deleteCustomer(id:any, avatar:any){
-        if (confirm('Are you sure ?')){
-            this.db.collection('products').doc(id).delete().then(() => {
-                this.storage.storage.refFromURL(avatar).delete().then(() => {
-                    this.snackBar.open('product Deleted !', 'Close', {
-                        duration: 5000,
-                        verticalPosition: 'top',
-                        horizontalPosition: 'center',
-                        direction: 'ltr'
-                    });
-
-                    window.location.reload();
-
-                }).catch(() => {
-                    alert('Error deleting avatar:');
-                });
-            }).catch(() => {
-                alert('Error deleting product:');
-            });
-        }
-    }
-
-    expandRow(num: number) {
-        this.expandRw = !this.expandRw;
-        this.rowNum = this.expandRw ? num : null;
-    }
+  expandRow(num: number) {
+    this.expandRw = !this.expandRw;
+    this.rowNum = this.expandRw ? num : null;
+  }
 
 }

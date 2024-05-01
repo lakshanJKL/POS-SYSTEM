@@ -2,7 +2,6 @@ import {AfterViewInit, Component, OnInit, ViewChild, viewChild} from '@angular/c
 import {Chart} from 'chart.js';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {DashboardService} from "../../../service/dashboard.service";
-import {OrderService} from "../../../order.service";
 
 @Component({
   selector: 'app-pie-chart',
@@ -14,33 +13,34 @@ import {OrderService} from "../../../order.service";
 export class PieChartComponent implements OnInit {
   canvas: any;
   ctx: any;
-  allcustomers:any[]=[];
-  allproducts:any[]=[];
-  allOrders:any[]=[];
+  allcustomers: any[] = [];
+  allproducts: any[] = [];
+  allOrders: any[] = [];
   @ViewChild("pieChart") myPieChart: any;
-  constructor(private database:AngularFirestore,
-              private dashboardService:DashboardService,
-              private orderService:OrderService
-              ) {
+
+  constructor(private database: AngularFirestore,
+              private dashboardService: DashboardService,
+  ) {
   }
+
   ngOnInit(): void {
     this.database.collection("customers").get()
-      .subscribe((querySnaps)=>{
-        querySnaps.forEach(doc=>{
+      .subscribe((querySnaps) => {
+        querySnaps.forEach(doc => {
           this.allcustomers.push(doc.data());
         });
         this.createPieChart();
       });
     this.database.collection("products").get()
-      .subscribe((querySnaps)=>{
-        querySnaps.forEach(doc=>{
+      .subscribe((querySnaps) => {
+        querySnaps.forEach(doc => {
           this.allproducts.push(doc.data());
         });
         this.createPieChart();
       });
     this.database.collection("orders").get()
-      .subscribe((querySnaps)=>{
-        querySnaps.forEach(doc=>{
+      .subscribe((querySnaps) => {
+        querySnaps.forEach(doc => {
           this.allOrders.push(doc.data());
         });
         this.createPieChart();
@@ -71,7 +71,6 @@ export class PieChartComponent implements OnInit {
               this.dashboardService.colors(1),
               this.dashboardService.colors(1),
             ],
-
           }]
         }
       });

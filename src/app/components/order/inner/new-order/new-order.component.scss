@@ -1,47 +1,52 @@
-mat-panel-title{
+mat-panel-title {
   font-size: 19px;
   font-weight: 500;
   font-family: "Roboto Condensed", sans-serif;
 }
-.form-block{
-  width:100%;
+
+.form-block {
+  width: 100%;
   height: 200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
- .order-details-block{
-   width:73%;
-   height:100%;
-   display: flex;
-   align-items: center;
+  .order-details-block {
+    width: 73%;
+    height: 100%;
+    display: flex;
+    align-items: center;
 
-   .full-width{
-     width: 100%;
-   }
- }
- .vr-line{
-   border-left: 2px solid rgba(4, 4, 45, 0.85);
-   height: 160px;
- }
-  .cart-block{
-    width:25%;
-    height:100%;
+    .full-width {
+      width: 100%;
+    }
+  }
+
+  .vr-line {
+    border-left: 2px solid rgba(4, 4, 45, 0.85);
+    height: 160px;
+  }
+
+  .cart-block {
+    width: 25%;
+    height: 100%;
     display: flex;
     //flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-bottom: 25px;
 
-    .full-width{
+    .full-width {
       width: 100%;
     }
-    button{
+
+    button {
       width: 100%;
       height: 50px;
     }
   }
 }
+
 .place-order-block {
   height: 48px;
   border-radius: 3px;
@@ -56,14 +61,15 @@ mat-panel-title{
   align-items: center;
   margin-right: 20px;
 
-  mat-label{
+  mat-label {
     color: black;
     font-weight: 700;
     font-size: 16px;
     font-style: normal;
     font-family: "Roboto Condensed", sans-serif;
   }
-  span{
+
+  span {
     margin-left: 5px;
     font-size: 16px;
   }
@@ -75,7 +81,7 @@ mat-panel-title{
   align-items: center;
   justify-content: flex-end;
 
-  button{
+  button {
 
     width: 50%;
   }

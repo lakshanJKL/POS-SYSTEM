@@ -1,13 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {MatIcon} from "@angular/material/icon";
-import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {Router, RouterLink} from "@angular/router";
 import {CurrencyPipe, NgForOf} from "@angular/common";
-import {OrderService} from "../../../order.service";
 import {MatIconButton} from "@angular/material/button";
 import {MatTooltip} from "@angular/material/tooltip";
+import {OrdersService} from "../../../service/orders.service";
 
 @Component({
   selector: 'app-all-order',
@@ -25,28 +23,24 @@ import {MatTooltip} from "@angular/material/tooltip";
 })
 export class AllOrderComponent implements OnInit {
 
-
-  expandRw: boolean = false;
-  rowNum: any;
   orderProducts: any[] = [];
 
-  constructor(private dataBase: AngularFirestore,
-              private snackBar: MatSnackBar,
+  constructor(private snackBar: MatSnackBar,
               private router: Router,
-              private orderService: OrderService
+              private ordersService: OrdersService
   ) {
   }
 
   ngOnInit(): void {
     this.router.navigateByUrl("/dashboard/orders/new");
-    this.orderProducts = this.orderService.productCart;
+    this.orderProducts = this.ordersService.productCart;
   }
 
 
   onDelete(id: any) {
     if (confirm("Are you sure ?")) {
-      if (id >= 0 && id < this.orderService.productCart.length) {
-        this.orderService.productCart.splice(id, 1);
+      if (id >= 0 && id < this.ordersService.productCart.length) {
+        this.ordersService.productCart.splice(id, 1);
       }
       this.snackBar.open("Successfully Deleted !", "close", {
         duration: 2000,
