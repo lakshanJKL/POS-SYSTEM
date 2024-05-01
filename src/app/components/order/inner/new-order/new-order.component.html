@@ -1,0 +1,114 @@
+<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  <mat-expansion-panel-header>
+    <mat-panel-title>
+      Add New Order
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <form>
+    <div class="container">
+      <div class="row">
+        <div class="form-block">
+          <div class="order-details-block">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 wrapper">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Search Customer</mat-label>
+                    <input type="text" placeholder="Ex: Saman Perera" matInput [formControl]="customerName"
+                           [matAutocomplete]="customerAuto">
+                    <mat-autocomplete autoActiveFirstOption #customerAuto="matAutocomplete"
+                                      (optionSelected)="autoCompleteFields($event.option.value)">
+                      <mat-option *ngFor="let option of customerFilteredOptions | async"
+                                  [value]="option">{{ option }}</mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 wrapper">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <input [formControl]="address" type="text" matInput placeholder="Ex: Colombo">
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 wrapper">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Salary</mat-label>
+                    <input [formControl]="salary" type="text" matInput placeholder="Ex: 50000">
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 wrapper">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Search Product</mat-label>
+                    <input type="text" placeholder="Ex: Soap" matInput [formControl]="productName"
+                           [matAutocomplete]="productAuto">
+                    <mat-autocomplete autoActiveFirstOption #productAuto="matAutocomplete"
+                                      (optionSelected)="autoCompleteFields($event.option.value)">
+                      <mat-option *ngFor="let option of productFilteredOptions | async"
+                                  [value]="option">{{ option }}</mat-option>
+                    </mat-autocomplete>
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 wrapper">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Qty on hand</mat-label>
+                    <input [formControl]="qtyOnHand" type="text" matInput placeholder="Ex: 100">
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 wrapper">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Unit Price</mat-label>
+                    <input [formControl]="unitPrice" type="text" matInput placeholder="Ex: 50">
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="vr-line"></div>
+          <div class="cart-block">
+            <div class="container">
+              <div class="row">
+                <div class="col-12  wrapper">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Qty to purchase</mat-label>
+                    <input [formControl]="quantity" type="number" matInput placeholder="Ex: 50">
+                  </mat-form-field>
+                </div>
+                <div class="col-12  wrapper">
+                  <button mat-raised-button color="primary" (click)="addToCart()">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    Add to cart
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</mat-expansion-panel>
+<div class="oder-tbl">
+  <router-outlet></router-outlet>
+</div>
+<div class="container place-order-block">
+  <div class="row">
+    <div class="col-12 col-md-4 col-lg-4 wrapper">
+      <div class="txt">
+        <mat-label> Total Amount :</mat-label>
+        <span>{{ tottalAmount | currency:" LKR "}}</span>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg-4 wrapper">
+      <div class="txt">
+        <mat-label>Products :</mat-label>
+        <span>{{ productCount }}</span>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 col-lg-4 wrapper flex-end">
+      <button mat-raised-button color="primary" (click)="placeOrder()">
+        <mat-icon>where_to_vote</mat-icon>
+        Place Order
+      </button>
+    </div>
+  </div>
+</div>
+

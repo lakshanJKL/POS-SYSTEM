@@ -1,0 +1,91 @@
+<div class="container" style="overflow: auto;height: 395px">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>
+            <div class="context">
+              No.
+            </div>
+            </th>
+          <th>
+            <div class="context">
+              Name
+            </div>
+          </th>
+          <th>
+            <div class="context">
+              Address
+            </div>
+          </th>
+          <th>
+            <div class="context">
+              Salary
+            </div>
+          </th>
+          <th>
+            <div class="context">
+              Avatar
+            </div>
+          </th>
+          <th>
+            <div class="context">
+              Options
+            </div>
+          </th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let tempCustomer of customers; index as num">
+        <tr >
+          <td>
+            <div class="context">
+              {{num + 1}}
+            </div>
+          </td>
+          <td>
+            <div class="context">
+              {{tempCustomer?.data.fullName}}
+            </div>
+          </td>
+          <td>
+            <div class="context">
+              {{tempCustomer?.data.address}}
+            </div>
+          </td>
+          <td>
+            <div class="context">
+              {{tempCustomer?.data.salary | currency:'LKR '}}
+            </div>
+          </td>
+          <td>
+            <div class="context">
+              <img [src]="tempCustomer?.data.avatar" alt="{{tempCustomer?.data.fullName}}">
+            </div>
+          </td>
+          <td>
+            <div class="context">
+              <div class="btns">
+                <button class="dlt" mat-icon-button color="warn" (click)="deleteCustomer(tempCustomer?.id, tempCustomer?.data.avatar)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-icon-button color="primary" routerLink="/dashboard/customers/new/all/update/{{tempCustomer?.id}}" (click)="expandRow(num)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="expandRw && rowNum === num" style="overflow: hidden">
+          <td colspan="6" [ngClass]="expandRw && rowNum === num ? 'expandRw' : 'collapseRw'">
+            <div class="customer-update">
+              <router-outlet></router-outlet>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

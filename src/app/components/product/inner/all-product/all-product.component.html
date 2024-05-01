@@ -1,0 +1,92 @@
+<div class="container" style="overflow: auto;height: 395px">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>
+                        <div class="context">
+                            No.
+                        </div>
+                    </th>
+                    <th>
+                        <div class="context">
+                            Description
+                        </div>
+                    </th>
+                    <th>
+                        <div class="context">
+                            Qty on hand
+                        </div>
+                    </th>
+                    <th>
+                        <div class="context">
+                            Unit Price
+                        </div>
+                    </th>
+                    <th>
+                        <div class="context">
+                            Product
+                        </div>
+                    </th>
+                    <th>
+                        <div class="context">
+                            Options
+                        </div>
+                    </th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let tempProduct of products; index as num">
+                <tr >
+                    <td>
+                        <div class="context">
+                            {{num + 1}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="context">
+                            {{tempProduct?.data.description}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="context">
+                            {{tempProduct?.data.qtyOnHand}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="context">
+                            {{tempProduct?.data.unitPrice | currency:'LKR '}}
+                        </div>
+                    </td>
+                    <td>
+                        <div class="context">
+                            <img [src]="tempProduct?.data.productImage" alt="{{tempProduct?.data.description}}">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="context">
+                            <div class="btns">
+                                <button class="dlt" mat-icon-button color="warn" (click)="deleteCustomer(tempProduct?.id, tempProduct?.data.productImage)">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                                <button mat-icon-button color="primary" routerLink="/dashboard/products/new/all/update/{{tempProduct?.id}}" (click)="expandRow(num)">
+                                    <mat-icon>edit</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr *ngIf="expandRw && rowNum === num" style="overflow: hidden">
+                    <td colspan="6" [ngClass]="expandRw && rowNum === num ? 'expandRw' : 'collapseRw'">
+                        <div class="product-update">
+                            <router-outlet></router-outlet>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

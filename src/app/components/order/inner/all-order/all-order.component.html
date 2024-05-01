@@ -1,0 +1,79 @@
+<div class="container" style="background-color: white;height: 334px">
+  <div class="row">
+    <div class="form-border">
+      <table class="table table-hover">
+        <thead>
+        <tr>
+          <th>
+            <div class="contxt">
+              No.
+            </div>
+          </th>
+          <th>
+            <div class="contxt">
+              Description
+            </div>
+          </th>
+          <th>
+            <div class="contxt">
+              Qty
+            </div>
+          </th>
+          <th>
+            <div class="contxt">
+              Unit Price
+            </div>
+          </th>
+          <th>
+            <div class="contxt">
+              Cost
+            </div>
+          </th>
+          <th>
+            <div class="contxt">
+              Options
+            </div>
+          </th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let tempOrder of orderProducts;index as num ">
+        <tr>
+          <td>
+            <div class="rwTxt">
+              {{num + 1}}
+            </div>
+          </td>
+          <td>
+            <div class="rwTxt">
+              {{tempOrder?.description}}
+            </div>
+          </td>
+          <td>
+            <div class="rwTxt">
+              {{tempOrder?.qtyToPurchase}}
+            </div>
+          </td>
+          <td>
+            <div class="rwTxt">
+              {{tempOrder?.productUnitPrice | currency:"LKR "}}
+            </div>
+          </td>
+          <td>
+            <div class="rwTxt">
+              {{tempOrder?.productCost | currency:"LKR "}}
+            </div>
+          </td>
+          <td>
+            <div class="contxt">
+              <button mat-icon-button matTooltip="Delete" style="color: red" (click)="onDelete(num)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+

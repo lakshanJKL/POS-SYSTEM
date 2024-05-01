@@ -1,0 +1,60 @@
+<div class="container ">
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add New Customer
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="main-outer">
+      <div class="inner">
+        <div class="form-content">
+          <form [formGroup]="form" (ngSubmit)="saveCustomer()">
+            <div class="container">
+              <div class="row">
+                <div class="col-12 col-md-4 col-lg-4 wrapper">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Full Name</mat-label>
+                    <input formControlName="fullName" type="text" matInput
+                           placeholder="Ex: Saman Perera">
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 wrapper">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Address</mat-label>
+                    <input formControlName="address" type="text" matInput
+                           placeholder="Ex: Colombo">
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 wrapper">
+                  <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Salary</mat-label>
+                    <input formControlName="salary" type="text" matInput
+                           placeholder="Ex: 50000">
+                  </mat-form-field>
+                </div>
+                <div class="col-12 col-md-4 col-lg-4 wrapper">
+                  <div class="file-outline">
+                    <input (change)="onChangeFile($event)" formControlName="avatar" type="file">
+                    <mat-spinner diameter="30" *ngIf="loading" value="{{uploadRate | async}}"></mat-spinner>
+                  </div>
+                </div>
+                <div class="col-12 wrapper">
+                  <div class="saveBtn">
+                    <button mat-raised-button color="primary" [disabled]="form.invalid || loading">Save New Customer
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+  <div class="all-customers">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+

@@ -1,0 +1,36 @@
+<div class="container" style=" height: 70px; ">
+  <div class="row">
+    <div class="dashboard-block">
+      <div class="btn-block">
+        <button mat-raised-button color="primary" routerLink="/dashboard/customers/new" (click)="loadState()">
+          <mat-icon>group</mat-icon>
+          Customer
+        </button>
+        <button mat-raised-button color="primary" routerLink="/dashboard/products/new" (click)="loadState()">
+          <mat-icon>category</mat-icon>
+          Product
+        </button>
+        <button mat-raised-button color="primary" routerLink="/dashboard/orders/new" (click)="loadState()">
+          <mat-icon>list_alt</mat-icon>
+          Order
+        </button>
+      </div>
+      <div class="home-block">
+        <button mat-icon-button matTooltip="Refresh" color="primary" (click)="refresh()">
+          <mat-icon>refresh</mat-icon>
+        </button>
+        <button mat-icon-button matTooltip="Home" color="primary" (click)="loadHome()">
+          <mat-icon>cottage</mat-icon>
+        </button>
+        <div class="head-text" *ngIf="isState">
+        <span>
+          Dashboard
+        </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<router-outlet></router-outlet>
