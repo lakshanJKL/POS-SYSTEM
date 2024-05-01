@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, viewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Chart} from 'chart.js';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {DashboardService} from "../../../service/dashboard.service";

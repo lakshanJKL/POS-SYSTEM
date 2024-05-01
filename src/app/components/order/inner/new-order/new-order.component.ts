@@ -120,6 +120,7 @@ export class NewOrderComponent implements OnInit {
   }
 
   autoCompleteFields(selectedOption: any) {
+
     this.db.collection("products", ref => ref
       .where("description", "==", selectedOption))
       .get().subscribe((querySnaps) => {
@@ -127,7 +128,6 @@ export class NewOrderComponent implements OnInit {
         this.selectedProductId = doc.id
       )
     });
-
     const selectedCustomer = this.customerObject.find(customer => customer.fullName === selectedOption);
     const selectedProduct = this.productObject.find(product => product.description === selectedOption);
 

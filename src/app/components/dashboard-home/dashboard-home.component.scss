@@ -2,7 +2,7 @@ $backgroundColor: rgba(176, 176, 176, 0.17);
 $borderRadius: 5px;
 $backgroundShadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
 
-@mixin dispaly($flex:flex,$direction:row,$align:center,$content:center) {
+@mixin display($flex:flex,$direction:row,$align:center,$content:center) {
   display: $flex;
   flex-direction: $direction;
   align-items: $align;
@@ -11,7 +11,7 @@ $backgroundShadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
 
 .chart-outer-block {
   height: 500px;
-  @include dispaly(flex, row, center, none);
+  @include display(flex, row, center, none);
   justify-content: space-between;
 
   .chart-inner-one {
@@ -19,14 +19,14 @@ $backgroundShadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
     height: 100%;
     border-radius: $borderRadius;
     box-shadow: $backgroundShadow;
-    @include dispaly();
+    @include display();
     background-color: $backgroundColor;
   }
 
   .chart-inner-two {
     width: 49%;
     height: 100%;
-    @include dispaly(flex, column, center, none);
+    @include display(flex, column, center, none);
     justify-content: space-between;
 
     .line-chart-block {
@@ -34,7 +34,7 @@ $backgroundShadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
       height: 49%;
       border-radius: $borderRadius;
       box-shadow: $backgroundShadow;
-      @include dispaly(flex, column, center, center);
+      @include display(flex, column, center, center);
       background-color: $backgroundColor;
     }
 
@@ -43,7 +43,7 @@ $backgroundShadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
       height: 49%;
       border-radius: $borderRadius;
       box-shadow: $backgroundShadow;
-      @include dispaly(flex, column, center, center);
+      @include display(flex, column, center, center);
       background-color: $backgroundColor;
     }
   }
