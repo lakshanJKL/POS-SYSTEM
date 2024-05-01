@@ -15,6 +15,7 @@ import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {MatAutocomplete, MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatIcon} from "@angular/material/icon";
 import {OrderService} from "../../../order.service";
+import {OrdersService} from "../../../service/orders.service";
 
 
 @Component({
@@ -75,7 +76,7 @@ export class NewOrderComponent implements OnInit {
   constructor(
     private snackBar: MatSnackBar,
     private db: AngularFirestore,
-    private orderService: OrderService,
+    private ordersService:OrdersService,
     private router: Router,
   ) {
   }
@@ -175,9 +176,9 @@ export class NewOrderComponent implements OnInit {
             this.unitPrice.reset();
             this.quantity.reset();
 
-            this.orderService.productCart.push(this.addToCartObj);
+            this.ordersService.productCart.push(this.addToCartObj);
             this.tottalAmount += this.addToCartObj.productCost;
-            this.productCount = this.orderService.productCart.length;
+            this.productCount = this.ordersService.productCart.length;
 
           }).catch(() => {
             alert("Product quantity not updated! Please try again.");
@@ -194,7 +195,7 @@ export class NewOrderComponent implements OnInit {
   }
 
   placeOrder() {
-    if (!((Object.keys(this.customer).length === 0) || (this.orderService.productCart.length == 0))) {
+    if (!((Object.keys(this.customer).length === 0) || (this.ordersService.productCart.length == 0))) {
       //customer object
       this.customer = {
         fullName: this.customerName.value,
@@ -205,7 +206,7 @@ export class NewOrderComponent implements OnInit {
       //order object
       const order = {
         customer: this.customer,
-        products: this.orderService.productCart,
+        products: this.ordersService.productCart,
         date: new Date().toLocaleDateString('en-GB'),
         total_cost: this.tottalAmount
       };
