@@ -1,20 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {finalize, map, Observable, startWith} from "rxjs";
-import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {map, Observable, startWith} from "rxjs";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormControl, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatExpansionModule, MatExpansionPanel, MatExpansionPanelTitle} from "@angular/material/expansion";
 import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatButton} from "@angular/material/button";
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatProgressBar} from "@angular/material/progress-bar";
-import {AsyncPipe, CommonModule, DatePipe, NgIf} from "@angular/common";
+import {AsyncPipe, CommonModule, NgIf} from "@angular/common";
 import {MatProgressSpinner, MatProgressSpinnerModule} from "@angular/material/progress-spinner";
-import {Router, RouterLink, RouterOutlet} from "@angular/router";
-import {MatAutocomplete, MatAutocompleteModule} from "@angular/material/autocomplete";
+import {RouterLink, RouterOutlet} from "@angular/router";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 import {MatIcon} from "@angular/material/icon";
-import {OrderService} from "../../../order.service";
 import {OrdersService} from "../../../service/orders.service";
 
 
@@ -76,8 +74,7 @@ export class NewOrderComponent implements OnInit {
   constructor(
     private snackBar: MatSnackBar,
     private db: AngularFirestore,
-    private ordersService:OrdersService,
-    private router: Router,
+    private ordersService: OrdersService,
   ) {
   }
 
@@ -225,6 +222,5 @@ export class NewOrderComponent implements OnInit {
     } else {
       return alert("Please Enter values !");
     }
-
   }
 }
