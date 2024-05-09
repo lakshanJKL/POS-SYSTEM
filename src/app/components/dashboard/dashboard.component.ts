@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, RouterLink, RouterOutlet} from "@angular/router";
 import {MatButton, MatButtonModule, MatFabButton, MatIconButton} from "@angular/material/button";
 import {MatIcon, MatIconModule} from "@angular/material/icon";
-import {MatTooltip} from "@angular/material/tooltip";
+import {MatTooltip, MatTooltipModule} from "@angular/material/tooltip";
 import {NgIf} from "@angular/common";
 import {DashboardService} from "../service/dashboard.service";
 import {Observable} from "rxjs";
@@ -18,6 +18,7 @@ import {Observable} from "rxjs";
     MatIconModule,
     MatIcon,
     MatFabButton,
+    MatTooltipModule,
     MatTooltip,
     MatIconButton,
     MatIconModule,
@@ -28,10 +29,12 @@ import {Observable} from "rxjs";
 })
 export class DashboardComponent implements OnInit {
   isState: any = true;
+  tooltipContent: any;
 
   constructor(private router: Router,
               private dashboardService: DashboardService
   ) {
+    this.tooltipContent ="User : user@gmail.com";
   }
 
   loadState() {
@@ -45,10 +48,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  refresh() {
-    window.location.reload();
-  }
-
   ngOnInit(): void {
+
   }
 }

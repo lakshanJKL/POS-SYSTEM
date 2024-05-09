@@ -4,20 +4,20 @@
       <div class="btn-block">
         <button mat-raised-button color="primary" routerLink="/dashboard/customers/new" (click)="loadState()">
           <mat-icon>group</mat-icon>
-          Customer
+          Customers
         </button>
         <button mat-raised-button color="primary" routerLink="/dashboard/products/new" (click)="loadState()">
           <mat-icon>category</mat-icon>
-          Product
+          Products
         </button>
         <button mat-raised-button color="primary" routerLink="/dashboard/orders/new" (click)="loadState()">
           <mat-icon>list_alt</mat-icon>
-          Order
+          Orders
         </button>
       </div>
       <div class="home-block">
-        <button mat-icon-button matTooltip="Refresh" color="primary" (click)="refresh()">
-          <mat-icon>refresh</mat-icon>
+        <button mat-icon-button [matTooltip]="tooltipContent"  color="primary" >
+          <mat-icon>person</mat-icon>
         </button>
         <button mat-icon-button matTooltip="Home" color="primary" (click)="loadHome()">
           <mat-icon>cottage</mat-icon>

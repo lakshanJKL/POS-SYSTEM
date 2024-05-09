@@ -13,6 +13,7 @@ import {BarChartComponent} from "./charts/bar-chart/bar-chart.component";
     MatButton,
     PieChartComponent,
     LineChartComponent,
+    BarChartComponent,
     BarChartComponent
   ],
   templateUrl: './dashboard-home.component.html',
