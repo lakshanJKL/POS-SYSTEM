@@ -71,6 +71,7 @@ export class PieChartComponent implements OnInit {
               this.dashboardService.colors(1),
               this.dashboardService.colors(1),
             ],
+
           }]
         }
       });

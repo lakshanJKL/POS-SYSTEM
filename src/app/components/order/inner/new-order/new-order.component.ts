@@ -57,7 +57,7 @@ export class NewOrderComponent implements OnInit {
   addToCartObj: any = {};
   productDescription: any;
   selectedProductId: any;
-  tottalAmount: any = 0;
+  totalAmount: any = 0;
   productCount: any = 0;
   customer: any = {};
   customerFilteredOptions: Observable<string[]> = new Observable<string[]>();
@@ -174,7 +174,7 @@ export class NewOrderComponent implements OnInit {
             this.quantity.reset();
 
             this.ordersService.productCart.push(this.addToCartObj);
-            this.tottalAmount += this.addToCartObj.productCost;
+            this.totalAmount += this.addToCartObj.productCost;
             this.productCount = this.ordersService.productCart.length;
 
           }).catch(() => {
@@ -206,7 +206,7 @@ export class NewOrderComponent implements OnInit {
         customer: this.customer,
         products: this.ordersService.productCart,
         date: new Date().toLocaleDateString('en-GB'),
-        total_cost: this.tottalAmount
+        total_cost: this.totalAmount
       };
 
       this.db.collection("orders").add(order).then(() => {
